@@ -41,17 +41,13 @@ public class Main {
                 }
             }
 
-            for (int x = 0; x < 100; x++) {
-                for (int y = 0; y < 100; y++) {
-                    System.out.print(grid[x][y] + ", ");
-                }
-                System.out.println();
-            }
+            AdjacentCells adjacent = new AdjacentCells(lines, columns, grid);
+            adjacent.printing();
 
         } catch (FileNotFoundException ex) {
             System.out.println("file not found");
         } catch (IOException e) {
-            System.out.println("error readLine()");
+            System.out.println("IO error");
         }
     }
 }

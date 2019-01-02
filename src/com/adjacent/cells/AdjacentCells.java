@@ -41,4 +41,13 @@ public class AdjacentCells {
     boolean validRight() {
         return true;
     }
+
+    void printing() {
+        for (int x = 0; x < 100; x++) {
+            for (int y = 0; y < 100; y++) {
+                System.out.print(matrix[y][x] + ", ");
+            }
+            System.out.println();
+        }
+    }
 }
