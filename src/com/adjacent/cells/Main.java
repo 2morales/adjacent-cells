@@ -11,6 +11,12 @@ public class Main {
      */
     private final static String FILE_NAME = "./grid/100x100.json";
 
+    private final static String NUM_EXTRACT_REG_EXP = "[^0,1]";
+
+    private final static String SPACE_LESS = "";
+
+    private final static String INPUT_LINE_SPLIT = ",";
+
     public static void main(String[] args) {
 
         try {
@@ -23,21 +29,22 @@ public class Main {
 
             int[][] grid = new int[lines][columns];
 
-            String inputLine = "";
             int j = 0;
             for (String line; (line = reader.readLine()) != null; ) {
 
-                inputLine = line.toLowerCase().replaceAll("[^0,1]", "");
+                String inputLine = line.toLowerCase().replaceAll(NUM_EXTRACT_REG_EXP, SPACE_LESS);
 
-                List<String> numbersInLine = Arrays.asList(inputLine.split(","));
+                if (!inputLine.isEmpty()) {
+                    List<String> numbersInLine = Arrays.asList(inputLine.split(INPUT_LINE_SPLIT));
 
-                if (numbersInLine.size() == 100) {
-                    int i = 0;
-                    for (String number : numbersInLine) {
-                        grid[i][j] = Integer.parseInt(number);
-                        i++;
+                    if (numbersInLine.size() == 100) {
+                        int i = 0;
+                        for (String number : numbersInLine) {
+                            grid[i][j] = Integer.parseInt(number);
+                            i++;
+                        }
+                        j++;
                     }
-                    j++;
                 }
             }
 

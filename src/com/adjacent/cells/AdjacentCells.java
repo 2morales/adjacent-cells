@@ -1,15 +1,32 @@
 package com.adjacent.cells;
 
+import java.util.List;
+
 public class AdjacentCells {
 
     private int lines;
     private int columns;
     private int[][] matrix;
+    private List<String> adjacentCells;
 
     AdjacentCells(int lines, int columns, int[][] matrix) {
         this.lines = lines;
         this.columns = columns;
         this.matrix = matrix;
+    }
+
+    List<String> findAdjacentCells() {
+        for (int x = 0; x < this.lines; x++) {
+            for (int y = 0; y < this.columns; y++) {
+                //System.out.print(matrix[y][x] + ", ");
+                if (validPosition(x, y)) {
+                    System.out.println(matrix[x][y]);
+                }
+            }
+        }
+
+
+        return null;
     }
 
     /**
@@ -19,14 +36,16 @@ public class AdjacentCells {
      * @param y columns
      * @return true if valid
      */
-    boolean validPosition(int x, int y) {
+    private boolean validPosition(int x, int y) {
         return (x >= 0
                 && x < columns
                 && y >= 0
                 && y < lines);
     }
 
-    boolean validUp() {
+    boolean validUp(int x, int y) {
+
+
         return true;
     }
 
