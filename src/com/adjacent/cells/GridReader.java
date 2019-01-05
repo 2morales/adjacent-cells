@@ -39,12 +39,12 @@ public class GridReader {
     }
 
     public int[][] importGrid() {
+        int[][] grid = new int[this.lines][this.columns];
         try {
 
             // which one to choose
             BufferedReader reader = new BufferedReader(new FileReader("./grid/" + fileName));
 
-            int[][] grid = new int[this.lines][this.columns];
 
             int j = 0;
             for (String line; (line = reader.readLine()) != null; ) {
@@ -57,23 +57,19 @@ public class GridReader {
                     if (numbersInLine.size() == this.lines) {
                         int i = 0;
                         for (String number : numbersInLine) {
-                            grid[i][j] = Integer.parseInt(number);
+                            grid[j][i] = Integer.parseInt(number);
                             i++;
                         }
                         j++;
                     }
                 }
             }
-
-//            AdjacentCells adjacent = new AdjacentCells(lines, columns, grid);
-  //          adjacent.printing();
-
         } catch (FileNotFoundException ex) {
             System.out.println("file not found");
         } catch (IOException e) {
             System.out.println("IO error");
         }
-        return null;
+        return grid;
     }
 }
 
