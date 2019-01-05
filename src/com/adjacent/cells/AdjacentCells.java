@@ -25,13 +25,13 @@ public class AdjacentCells {
         this.matrix = matrix;
     }
 
-    List<Coordinates> floodFill() {
+    List<Coordinates> floodFill(int target, int replacement) {
 
         // execute floodFill
         FloodFill floodFill = new FloodFill();
 
         // return solution
-        return floodFill.getSolution(matrix, 1, 0);
+        return floodFill.getSolution(matrix, target, replacement);
     }
 
     void printing() {

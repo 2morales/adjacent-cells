@@ -1,5 +1,6 @@
 package com.adjacent.cells;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -33,6 +34,13 @@ public class Main {
         AdjacentCells adjacentCells = new AdjacentCells(grid.length, grid[0].length, grid);
 
         // 1 = target, 0 = replacement
-        System.out.println(adjacentCells.floodFill());
+        final int target = 1;
+        final int replacement = 0;
+
+        // output purposes
+        List<Coordinates> pointsList = adjacentCells.floodFill(target, replacement);
+        for (Coordinates coordinates : pointsList) {
+            System.out.println("[" + coordinates.getX() + ", " + coordinates.getY() + "]");
+        }
     }
 }

@@ -37,12 +37,10 @@ public class FloodFill {
             return;
         }
 
-        // if grid/node value is equal to target, return
+        // if grid/node value is not equal to target, return
         if (grid[x][y] != target) {
             return;
         }
-
-        // grid[x][y] = target; ???????????
 
         // empty Queue
         Queue<Coordinates> queue = new LinkedList<>();
