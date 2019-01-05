@@ -1,6 +1,5 @@
 package com.adjacent.cells;
 
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -8,7 +7,10 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class GridReader {
+/**
+ * Default Parser for input grids
+ */
+class GridReader {
 
     private String fileName;
 
@@ -33,12 +35,22 @@ public class GridReader {
                 this.lines = 1000;
                 this.columns = 1000;
                 break;
+            case 3:
+                this.fileName = "10000x10000.json";
+                this.lines = 10000;
+                this.columns = 10000;
+                break;
+            case 4:
+                this.fileName = "20000x20000.json";
+                this.lines = 20000;
+                this.columns = 20000;
+                break;
             default: // change this
                 this.fileName = "100x100.json";
         }
     }
 
-    public int[][] importGrid() {
+    int[][] importGrid() {
         int[][] grid = new int[this.lines][this.columns];
         try {
 

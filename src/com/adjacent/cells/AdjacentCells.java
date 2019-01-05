@@ -5,41 +5,39 @@ import java.util.List;
 /**
  * AdjacentCells class
  * <p>
+ * <p>
+ * Cells are considered adjacent
+ * if they both contain a 1 (one)
+ * and are next to each other horizontally
+ * or vertically (not diagonally).
+ * <p>
+ * <p>
  * Queue based implementation of Flood Fill Algorithm.
  */
-public class AdjacentCells {
+class AdjacentCells {
 
     /**
-     * Number of Lines
+     * Grid
      */
-    private int numLines;
-    /**
-     * Number of Columns
-     */
-    private int numColumns;
-    private int[][] matrix;
+    private int[][] grid;
 
-    AdjacentCells(int lines, int columns, int[][] matrix) {
-        this.numLines = lines;
-        this.numColumns = columns;
-        this.matrix = matrix;
+    AdjacentCells(int[][] grid) {
+        this.grid = grid;
     }
 
+    /**
+     * Call to Flood Fill algorithm
+     *
+     * @param target      target color
+     * @param replacement replacement color
+     * @return List with Coordinates of Adjacent Cells
+     */
     List<Coordinates> floodFill(int target, int replacement) {
 
         // execute floodFill
         FloodFill floodFill = new FloodFill();
 
         // return solution
-        return floodFill.getSolution(matrix, target, replacement);
-    }
-
-    void printing() {
-        for (int x = 0; x < this.numLines; x++) {
-            for (int y = 0; y < this.numColumns; y++) {
-                System.out.print(matrix[x][y] + ", ");
-            }
-            System.out.println();
-        }
+        return floodFill.getSolution(grid, target, replacement);
     }
 }

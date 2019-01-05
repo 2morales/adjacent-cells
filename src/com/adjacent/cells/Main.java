@@ -31,13 +31,13 @@ public class Main {
         int[][] grid = gridReader.importGrid();
 
         // then output result
-        AdjacentCells adjacentCells = new AdjacentCells(grid.length, grid[0].length, grid);
+        AdjacentCells adjacentCells = new AdjacentCells(grid);
 
         // 1 = target, 0 = replacement
         final int target = 1;
         final int replacement = 0;
 
-        // output purposes
+        // output
         List<Coordinates> pointsList = adjacentCells.floodFill(target, replacement);
         for (Coordinates coordinates : pointsList) {
             System.out.println("[" + coordinates.getX() + ", " + coordinates.getY() + "]");

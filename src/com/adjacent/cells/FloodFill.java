@@ -8,14 +8,28 @@ import java.util.Queue;
 /**
  * Queue based Implementation of Flood Fill Algorithm
  */
-public class FloodFill {
+class FloodFill {
 
+    /**
+     * Solution List
+     */
     private List<Coordinates> solution;
 
+    /**
+     * Constructor
+     */
     FloodFill() {
         this.solution = new ArrayList<>();
     }
 
+    /**
+     * Finds all adjacent cells in a grid
+     *
+     * @param grid        grid
+     * @param target      target color
+     * @param replacement replacement color
+     * @return adjacent cells found
+     */
     List<Coordinates> getSolution(int[][] grid, int target, int replacement) {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
@@ -25,11 +39,19 @@ public class FloodFill {
                 floodFill(grid, target, replacement, i, j);
             }
         }
-        // returns the solution in the end
-        System.out.println(grid.length);
         return this.solution;
     }
 
+    /**
+     * https://en.wikipedia.org/wiki/Flood_fill
+     * Queue based Implementation of Flood Fill Algorithm
+     *
+     * @param grid        grid
+     * @param target      target color
+     * @param replacement replacement color
+     * @param x           Coordinate X
+     * @param y           Coordinate Y
+     */
     private void floodFill(int[][] grid, int target, int replacement, int x, int y) {
 
         // target is equal to replacement, return
@@ -42,7 +64,7 @@ public class FloodFill {
             return;
         }
 
-        // empty Queue
+        // empty Queue init
         Queue<Coordinates> queue = new LinkedList<>();
 
         // add node to the end of queue
@@ -50,26 +72,32 @@ public class FloodFill {
 
         // while queue is not empty
         while (!queue.isEmpty()) {
+
+            // remove first element from queue
             Coordinates point = queue.remove();
 
+            // checks West (X - 1) on a X,Y cartesian graph
             if (value(grid, point.getX() - 1, point.getY()) == target) {
                 grid[point.getX() - 1][point.getY()] = replacement;
                 solution.add(new Coordinates(point.getX() - 1, point.getY()));
                 queue.add(new Coordinates(point.getX() - 1, point.getY()));
             }
 
+            // checks East (X + 1) on a X,Y cartesian graph
             if (value(grid, point.getX() + 1, point.getY()) == target) {
                 grid[point.getX() + 1][point.getY()] = replacement;
                 solution.add(new Coordinates(point.getX() + 1, point.getY()));
                 queue.add(new Coordinates(point.getX() + 1, point.getY()));
             }
 
+            // checks North (Y - 1) on a X,Y cartesian graph
             if (value(grid, point.getX(), point.getY() - 1) == target) {
                 grid[point.getX()][point.getY() - 1] = replacement;
                 solution.add(new Coordinates(point.getX(), point.getY() - 1));
                 queue.add(new Coordinates(point.getX(), point.getY() - 1));
             }
 
+            // checks South (y + 1) on a X,Y cartesian graph
             if (value(grid, point.getX(), point.getY() + 1) == target) {
                 grid[point.getX()][point.getY() + 1] = replacement;
                 solution.add(new Coordinates(point.getX(), point.getY() + 1));
@@ -78,6 +106,14 @@ public class FloodFill {
         }
     }
 
+    /**
+     * Checks if position on X and Y coordinates is valid
+     *
+     * @param grid grid
+     * @param x    Coordinate X
+     * @param y    Coordinate Y
+     * @return -1 if it isn't valid or value at position if it is valid
+     */
     private int value(int[][] grid, int x, int y) {
         if (x < 0 || x >= grid.length) {
             return -1;
