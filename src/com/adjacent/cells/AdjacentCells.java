@@ -15,14 +15,14 @@ import java.util.Set;
  * <p>
  * Queue based implementation of Flood Fill Algorithm.
  */
-class AdjacentCells {
+public class AdjacentCells {
 
     /**
      * Grid
      */
     private int[][] grid;
 
-    AdjacentCells(int[][] grid) {
+    public AdjacentCells(int[][] grid) {
         this.grid = grid;
     }
 
@@ -33,7 +33,7 @@ class AdjacentCells {
      * @param replacement replacement color
      * @return List with Coordinates of Adjacent Cells
      */
-    Set<List<Coordinates>> floodFill(int target, int replacement) {
+    public Set<List<Coordinates>> floodFill(int target, int replacement) {
 
         // execute floodFill
         FloodFill floodFill = new FloodFill();

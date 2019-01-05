@@ -5,7 +5,7 @@ package com.adjacent.cells;
  * <p>
  * Queue based implementation of Flood Fill Algorithm.
  */
-class Coordinates {
+public class Coordinates {
 
     /**
      * Coordinate X
@@ -23,7 +23,7 @@ class Coordinates {
      * @param x Coordinate X
      * @param y Coordinate Y
      */
-    Coordinates(int x, int y) {
+    public Coordinates(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -34,5 +34,23 @@ class Coordinates {
 
     int getY() {
         return this.y;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (this == obj)
+            return true;
+
+        if (obj == null)
+            return false;
+
+        if (this.getClass() != obj.getClass())
+            return false;
+
+        Coordinates coordinates = (Coordinates) obj;
+
+        return coordinates.getX() == ((Coordinates) obj).getX()
+                && coordinates.getY() == ((Coordinates) obj).getY();
     }
 }
