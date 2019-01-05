@@ -6,8 +6,15 @@ import java.util.Set;
 
 public class Main {
 
-    public static void main(String[] args) {
+    private static final int[][] TEST_GRID = new int[][]{
+            {0, 0, 0, 1, 0, 0, 1, 1},
+            {0, 0, 1, 1, 1, 0, 1, 1},
+            {0, 0, 0, 0, 0, 0, 1, 0},
+            {0, 0, 0, 1, 0, 0, 1, 1},
+            {0, 0, 0, 1, 0, 0, 1, 1}
+    };
 
+    public static void main(String[] args) {
 
         // choose which grid
         Scanner scanner = new Scanner(System.in);
@@ -31,16 +38,8 @@ public class Main {
         GridReader gridReader = new GridReader(opt);
         int[][] grid = gridReader.importGrid();
 
-        int[][] testGrid = new int[][]{
-                {0, 0, 0, 1, 0, 0, 1, 1},
-                {0, 0, 1, 1, 1, 0, 1, 1},
-                {0, 0, 0, 0, 0, 0, 1, 0},
-                {0, 0, 0, 1, 0, 0, 1, 1},
-                {0, 0, 0, 1, 0, 0, 1, 1}
-        };
-
         // then output result
-        AdjacentCells adjacentCells = new AdjacentCells(testGrid);
+        AdjacentCells adjacentCells = new AdjacentCells(grid);
 
         // 1 = target, 0 = replacement
         final int target = 1;
