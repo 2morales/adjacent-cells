@@ -1,4 +1,4 @@
-# Adjacent cells challenge	
+# Adjacent Cells Challenge	
 
 > Using any programming language, create a program that is capable of identifying all the groups of adjacent cells in a grid.
 
