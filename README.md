@@ -18,7 +18,7 @@ To do so:
     1. Go to Main.java file and change parameter on line 42 from 'grid' to 'TEST_GRID'.
     2. Then, compare the outputted result with the one on the given document.
 
-Unit tests will be made in order to automate this process.
+Unit tests will be made in order to automate this process and avoid hard-coded inputs/declarations.
 
 ## Built With
 
