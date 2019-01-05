@@ -27,8 +27,12 @@ public class Main {
 
         // read, import, parse grid
         GridReader gridReader = new GridReader(opt);
-        gridReader.importGrid();
+        int[][] grid = gridReader.importGrid();
 
         // then output result
+        AdjacentCells adjacentCells = new AdjacentCells(grid.length, grid[0].length, grid);
+
+        // 1 = target, 0 = replacement
+        System.out.println(adjacentCells.floodFill());
     }
 }
