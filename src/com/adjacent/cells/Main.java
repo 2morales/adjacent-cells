@@ -2,6 +2,7 @@ package com.adjacent.cells;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Main {
 
@@ -30,17 +31,33 @@ public class Main {
         GridReader gridReader = new GridReader(opt);
         int[][] grid = gridReader.importGrid();
 
+        int[][] testGrid = new int[][]{
+                {0, 0, 0, 1, 0, 0, 1, 1},
+                {0, 0, 1, 1, 1, 0, 1, 1},
+                {0, 0, 0, 0, 0, 0, 1, 0},
+                {0, 0, 0, 1, 0, 0, 1, 1},
+                {0, 0, 0, 1, 0, 0, 1, 1}
+        };
+
         // then output result
-        AdjacentCells adjacentCells = new AdjacentCells(grid);
+        AdjacentCells adjacentCells = new AdjacentCells(testGrid);
 
         // 1 = target, 0 = replacement
         final int target = 1;
         final int replacement = 0;
 
         // output
-        List<Coordinates> pointsList = adjacentCells.floodFill(target, replacement);
-        for (Coordinates coordinates : pointsList) {
-            System.out.println("[" + coordinates.getX() + ", " + coordinates.getY() + "]");
+        Set<List<Coordinates>> pointsGroup = adjacentCells.floodFill(target, replacement);
+        for (List<Coordinates> pointsList : pointsGroup) {
+            System.out.print("[ ");
+
+            int i = 0;
+            for (Coordinates coordinates : pointsList) {
+                System.out.print("[" + coordinates.getX() + ", " + coordinates.getY() + "]");
+
+                if (++i != pointsList.size()) System.out.print(", ");
+            }
+            System.out.println(" ]");
         }
     }
 }

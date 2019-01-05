@@ -1,9 +1,6 @@
 package com.adjacent.cells;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * Queue based Implementation of Flood Fill Algorithm
@@ -13,13 +10,13 @@ class FloodFill {
     /**
      * Solution List
      */
-    private List<Coordinates> solution;
+    private Set<List<Coordinates>> solution;
 
     /**
      * Constructor
      */
     FloodFill() {
-        this.solution = new ArrayList<>();
+        this.solution = new HashSet<>();
     }
 
     /**
@@ -30,13 +27,18 @@ class FloodFill {
      * @param replacement replacement color
      * @return adjacent cells found
      */
-    List<Coordinates> getSolution(int[][] grid, int target, int replacement) {
+    Set<List<Coordinates>> getSolution(int[][] grid, int target, int replacement) {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
                 if (grid[i][j] == 0) continue;
 
                 // algorithm call
-                floodFill(grid, target, replacement, i, j);
+                List<Coordinates> tmp = new ArrayList<>();
+                floodFill(grid, target, replacement, i, j, tmp);
+
+                if (tmp.size() > 1) {
+                    solution.add(tmp);
+                }
             }
         }
         return this.solution;
@@ -52,7 +54,7 @@ class FloodFill {
      * @param x           Coordinate X
      * @param y           Coordinate Y
      */
-    private void floodFill(int[][] grid, int target, int replacement, int x, int y) {
+    private void floodFill(int[][] grid, int target, int replacement, int x, int y, List<Coordinates> tmp) {
 
         // target is equal to replacement, return
         if (target == replacement) {
@@ -79,28 +81,28 @@ class FloodFill {
             // checks West (X - 1) on a X,Y cartesian graph
             if (value(grid, point.getX() - 1, point.getY()) == target) {
                 grid[point.getX() - 1][point.getY()] = replacement;
-                solution.add(new Coordinates(point.getX() - 1, point.getY()));
+                tmp.add(new Coordinates(point.getX() - 1, point.getY()));
                 queue.add(new Coordinates(point.getX() - 1, point.getY()));
             }
 
             // checks East (X + 1) on a X,Y cartesian graph
             if (value(grid, point.getX() + 1, point.getY()) == target) {
                 grid[point.getX() + 1][point.getY()] = replacement;
-                solution.add(new Coordinates(point.getX() + 1, point.getY()));
+                tmp.add(new Coordinates(point.getX() + 1, point.getY()));
                 queue.add(new Coordinates(point.getX() + 1, point.getY()));
             }
 
             // checks North (Y - 1) on a X,Y cartesian graph
             if (value(grid, point.getX(), point.getY() - 1) == target) {
                 grid[point.getX()][point.getY() - 1] = replacement;
-                solution.add(new Coordinates(point.getX(), point.getY() - 1));
+                tmp.add(new Coordinates(point.getX(), point.getY() - 1));
                 queue.add(new Coordinates(point.getX(), point.getY() - 1));
             }
 
             // checks South (y + 1) on a X,Y cartesian graph
             if (value(grid, point.getX(), point.getY() + 1) == target) {
                 grid[point.getX()][point.getY() + 1] = replacement;
-                solution.add(new Coordinates(point.getX(), point.getY() + 1));
+                tmp.add(new Coordinates(point.getX(), point.getY() + 1));
                 queue.add(new Coordinates(point.getX(), point.getY() + 1));
             }
         }

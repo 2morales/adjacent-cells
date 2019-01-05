@@ -1,6 +1,7 @@
 package com.adjacent.cells;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * AdjacentCells class
@@ -32,7 +33,7 @@ class AdjacentCells {
      * @param replacement replacement color
      * @return List with Coordinates of Adjacent Cells
      */
-    List<Coordinates> floodFill(int target, int replacement) {
+    Set<List<Coordinates>> floodFill(int target, int replacement) {
 
         // execute floodFill
         FloodFill floodFill = new FloodFill();
