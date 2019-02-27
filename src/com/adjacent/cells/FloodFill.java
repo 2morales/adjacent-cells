@@ -8,9 +8,9 @@ import java.util.*;
 class FloodFill {
 
     /**
-        some pointless comments
+        some pointless feature
      */
-    private String some_pointless_string;
+    private String my_new_feature;
 
     /**
      * Solution List
