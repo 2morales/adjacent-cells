@@ -8,6 +8,11 @@ import java.util.*;
 class FloodFill {
 
     /**
+        some pointless comments
+     */
+    private String some_pointless_string;
+
+    /**
      * Solution List
      */
     private Set<List<Coordinates>> solution;
