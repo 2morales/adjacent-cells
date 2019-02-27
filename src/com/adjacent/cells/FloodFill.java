@@ -8,6 +8,11 @@ import java.util.*;
 class FloodFill {
 
     /**
+        some pointless feature
+     */
+    private String my_new_feature;
+
+    /**
      * Solution List
      */
     private Set<List<Coordinates>> solution;
